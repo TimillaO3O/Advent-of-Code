@@ -1,21 +1,19 @@
 data = open("data.txt").read().splitlines()
 
-part1 = 0
-part2 = 0
+numbers = [0,0]
 for i in data:
-  p1 = ""
-  p2 = ""
+  strings = ["", ""]
   for x in range(len(i)):
     if i[x].isdigit():
-      p1 += i[x]
-      p2 += i[x]
+      strings[0] += i[x]
+      strings[1] += i[x]
     for j, y in enumerate(["zero", "one", "two", 
     "three", "four", "five", 
     "six", "seven", "eight", "nine"]):
       if i[x:].startswith(y):
-        p2 += str(j)
-  part1 += int(p1[0] + p1[-1])
-  part2 += int(p2[0] + p2[-1])
+        strings[1] += str(j)
+  numbers[0] += int((strings[0])[0] + (strings[0])[-1])
+  numbers[1] += int((strings[1])[0] + (strings[1])[-1])
 
-print("PART 1: " + str(part1))
-print("PART 2: " + str(part2))
+print("PART 1: " + str(numbers[0]))
+print("PART 2: " + str(numbers[1]))
