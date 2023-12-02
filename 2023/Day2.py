@@ -1,6 +1,7 @@
 data = open("data.txt").read().splitlines()
 
 total = [0, 0]
+color_indices = {"blue": 0, "red": 1, "green": 2}
 for i in data:
   lines = i.split(" ")
   least = [0, 0, 0]
@@ -10,12 +11,10 @@ for i in data:
     "red" in lines[x] and int(lines[x-1]) > 12 or \
     "green" in lines[x] and int(lines[x-1]) > 13:
         good = False
-    if "blue" in lines[x] and int(lines[x-1]) > least[0]:
-      least[0] = int(lines[x-1])
-    if "red" in lines[x] and int(lines[x-1]) > least[1]:
-      least[1] = int(lines[x-1])
-    if "green" in lines[x] and int(lines[x-1]) > least[2]:
-      least[2] = int(lines[x-1])
+    for color in color_indices:
+      index = color_indices[color]
+      if color in lines[x] and int(lines[x-1]) > least[index]:
+          least[index] = int(lines[x-1])
   if good is True:
     total[0] += int((lines[1])[:-1])
   total[1] += least[0] * least[1] * least[2]
