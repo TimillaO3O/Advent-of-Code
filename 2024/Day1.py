@@ -1,4 +1,4 @@
-data = open("2024/data1.txt").read().split()
+data = open("2024/Data/data1.txt").read().split()
 
 leftSide = []
 rightSide = []
